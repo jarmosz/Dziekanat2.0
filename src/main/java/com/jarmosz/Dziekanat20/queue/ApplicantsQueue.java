@@ -1,6 +1,7 @@
 package com.jarmosz.Dziekanat20.queue;
 
 import java.util.AbstractQueue;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -10,6 +11,10 @@ public class ApplicantsQueue<T> extends AbstractQueue<T> {
 
     public ApplicantsQueue(){
         this.applicants = new LinkedList<T>();
+    }
+
+    public void rebuildQueue(LinkedList<T> applicants){
+        this.applicants = applicants;
     }
 
     @Override

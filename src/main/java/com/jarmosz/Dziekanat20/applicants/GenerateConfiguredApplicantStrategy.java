@@ -29,7 +29,7 @@ public class GenerateConfiguredApplicantStrategy implements GenerateStrategy {
     }
 
     @Override
-    public Person generateApplicant() {
+    public Person generatePerson() {
 
         if (iterator.hasNext()) {
             switch (iterator.next()) {

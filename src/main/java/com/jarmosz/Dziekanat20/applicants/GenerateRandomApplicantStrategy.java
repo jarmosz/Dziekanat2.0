@@ -35,7 +35,7 @@ public class GenerateRandomApplicantStrategy implements GenerateStrategy {
     }
 
     @Override
-    public Person generateApplicant() {
+    public Person generatePerson() {
         switch(getApplicantTypeWithProbability()){
             case STUDENT:
                 log.info("New Student created in generator");

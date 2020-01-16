@@ -27,4 +27,14 @@ public class Dean implements Person {
     public String tellSomethingAbout() {
         return toString();
     }
+
+    @Override
+    public ApplicantType sayType() {
+        return this.type;
+    }
+
+    @Override
+    public double howIAmImportantHere() {
+        return this.priority;
+    }
 }
