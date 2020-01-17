@@ -1,9 +1,12 @@
 package com.jarmosz.Dziekanat20.applicants.person;
 import com.jarmosz.Dziekanat20.applicants.ApplicantType;
+import com.jarmosz.Dziekanat20.applicants.Task;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.ArrayList;
 
 @Builder
 @ToString

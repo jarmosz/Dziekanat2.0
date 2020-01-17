@@ -1,56 +1,42 @@
 package com.jarmosz.Dziekanat20.queue;
 
-import java.util.AbstractQueue;
+import com.jarmosz.Dziekanat20.applicants.Applicant;
+import com.jarmosz.Dziekanat20.applicants.GenerateStrategyFactory;
+import com.jarmosz.Dziekanat20.applicants.TaskSetCreator;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
 
-public class ApplicantsQueue<T> extends AbstractQueue<T> {
+@Component
+public class ApplicantsQueue  {
 
-    private LinkedList<T> applicants;
+    @Value("${applicants.queue.size}")
+    private int queueSize;
 
-    public ApplicantsQueue(){
-        this.applicants = new LinkedList<T>();
-    }
+    @Autowired
+    private GenerateStrategyFactory generateStrategyFactory;
 
-    public void rebuildQueue(LinkedList<T> applicants){
-        this.applicants = applicants;
-    }
+    @Getter
+    @Setter
+    private ArrayList<Applicant> applicantsQueue;
 
-    @Override
-    public Iterator<T> iterator() {
-        return applicants.iterator();
-    }
+    @PostConstruct
+    public void initQueue(){
+        applicantsQueue = new ArrayList<>();
 
-    @Override
-    public int size() {
-        return applicants.size();
-    }
-
-    @Override
-    public boolean offer(T t) {
-        if(t == null){
-            return false;
-        }
-        else {
-            applicants.add(t);
-            return true;
+        int currentSize = 0;
+        while(currentSize < queueSize){
+            Applicant applicant = new Applicant();
+            applicant.setPersonality(generateStrategyFactory.getStrategy().generatePerson());
+            applicant.setTasks(TaskSetCreator.createSetOfTask());
+            applicantsQueue.add(applicant);
+            currentSize += 1;
         }
     }
 
-    @Override
-    public T poll() {
-        Iterator<T> iter = applicants.iterator();
-        T t = iter.next();
-        if(t != null){
-            iter.remove();
-            return t;
-        }
-        return null;
-    }
-
-    @Override
-    public T peek() {
-        return applicants.getFirst();
-    }
 }
