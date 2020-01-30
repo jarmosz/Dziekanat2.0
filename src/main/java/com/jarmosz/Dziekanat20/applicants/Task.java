@@ -6,6 +6,7 @@ import lombok.Setter;
 
 @Builder
 public class Task {
+
     @Builder.Default
     @Getter
     @Setter

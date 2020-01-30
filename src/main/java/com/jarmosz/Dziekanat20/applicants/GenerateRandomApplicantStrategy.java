@@ -38,22 +38,16 @@ public class GenerateRandomApplicantStrategy implements GenerateStrategy {
     public Person generatePerson() {
         switch(getApplicantTypeWithProbability()){
             case STUDENT:
-                log.info("New Student created in generator");
                 return applicantsFactory.student();
             case PROFESSOR:
-                log.info("New Professor created in generator");
                 return applicantsFactory.professor();
             case PHDSTUDENT:
-                log.info("New PhDStudent created in generator");
                 return applicantsFactory.phdstudent();
             case LECTURER:
-                log.info("New Lecturer created in generator");
                 return applicantsFactory.lecturer();
             case FRIEND:
-                log.info("New Employee's Friend created in generator");
                 return applicantsFactory.friend();
             case DEAN:
-                log.info("New Dean created in generator");
                 return applicantsFactory.dean();
             default:
                 throw new IllegalArgumentException("Unknown enum type returned in random applicant generator");

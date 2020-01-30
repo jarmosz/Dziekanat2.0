@@ -1,12 +1,10 @@
 package com.jarmosz.Dziekanat20.applicants.person;
+
 import com.jarmosz.Dziekanat20.applicants.ApplicantType;
-import com.jarmosz.Dziekanat20.applicants.Task;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.util.ArrayList;
 
 @Builder
 @ToString
@@ -19,6 +17,7 @@ public class Lecturer implements Person {
     private double priority;
     private int additionalHomeworkTasks;
     private ApplicantType type;
+    private int waitingRounds;
 
 
     @Override
@@ -39,5 +38,10 @@ public class Lecturer implements Person {
     @Override
     public double howIAmImportantHere() {
         return this.priority;
+    }
+
+    @Override
+    public void waitOneMoreRound() {
+        waitingRounds+=1;
     }
 }

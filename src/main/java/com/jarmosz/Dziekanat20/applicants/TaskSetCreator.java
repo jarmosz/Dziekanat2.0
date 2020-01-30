@@ -1,5 +1,8 @@
 package com.jarmosz.Dziekanat20.applicants;
-import lombok.extern.java.Log;
+
+import java.util.concurrent.ThreadLocalRandom;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -7,8 +10,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 @Component
+@Setter
+@Getter
 public class TaskSetCreator {
-
 
     private static Double tasksDifficulty;
 
@@ -19,7 +23,7 @@ public class TaskSetCreator {
 
     public static ArrayList<Task> createSetOfTask(){
         Random random = new Random();
-        double taskAmount = (double) random.nextInt(4);
+        int taskAmount = ThreadLocalRandom.current().nextInt(1, 3 + 1);
 
         ArrayList<Task> tasks = new ArrayList<>();
         for(int i = 0; i < taskAmount; i++){

@@ -18,6 +18,7 @@ public class Professor implements Person {
     private double priority;
     private int totalDifferential;
     private ApplicantType type;
+    private int waitingRounds;
 
 
     @Override
@@ -38,5 +39,10 @@ public class Professor implements Person {
     @Override
     public double howIAmImportantHere() {
         return this.priority;
+    }
+
+    @Override
+    public void waitOneMoreRound() {
+        waitingRounds+=1;
     }
 }

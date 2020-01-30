@@ -1,12 +1,10 @@
 package com.jarmosz.Dziekanat20.applicants.person;
+
 import com.jarmosz.Dziekanat20.applicants.ApplicantType;
-import com.jarmosz.Dziekanat20.applicants.Task;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.util.ArrayList;
 
 @Builder
 @ToString
@@ -20,10 +18,11 @@ public class Student implements Person {
     private int drinkedBears;
     private boolean hasChocolate;
     private boolean hasFlowers;
+    private int waitingRounds;
 
     @Override
     public void reactOnWaiting() {
-        this.drinkedBears += 1;
+            this.drinkedBears += 1;
     }
 
     @Override
@@ -39,5 +38,13 @@ public class Student implements Person {
     @Override
     public double howIAmImportantHere() {
         return this.priority;
+    }
+
+    @Override
+    public void waitOneMoreRound() {
+        if(waitingRounds % 2 == 0) {
+            reactOnWaiting();
+        }
+        waitingRounds += 1;
     }
 }

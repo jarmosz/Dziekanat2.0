@@ -32,31 +32,34 @@ public class GenerateConfiguredApplicantStrategy implements GenerateStrategy {
     public Person generatePerson() {
 
         if (iterator.hasNext()) {
-            switch (iterator.next()) {
-                case STUDENT:
-                    log.info("New Student created from properties");
-                    return applicantsFactory.student();
-                case PROFESSOR:
-                    log.info("New Professor created from properties");
-                    return applicantsFactory.professor();
-                case PHDSTUDENT:
-                    log.info("New PhDStudent created from properties");
-                    return applicantsFactory.phdstudent();
-                case LECTURER:
-                    log.info("New Lecturer created from properties");
-                    return applicantsFactory.lecturer();
-                case FRIEND:
-                    log.info("New Employee's Friend created from properties");
-                    return applicantsFactory.friend();
-                case DEAN:
-                    log.info("New Dean created from properties");
-                    return applicantsFactory.dean();
-                default:
-                    throw new IllegalArgumentException("Person type, passed in properties doesn't exist!");
-            }
+            return getPerson(iterator.next());
+        }
+        else if(!iterator.hasNext()){
+            iterator = applicantsList.iterator();
+            return getPerson(iterator.next());
         }
         else {
             throw new IllegalArgumentException("Person type, passed in properties doesn't exist!");
         }
+    }
+
+    public Person getPerson(ApplicantType applicantType){
+        switch (applicantType) {
+            case STUDENT:
+                return applicantsFactory.student();
+            case PROFESSOR:
+                return applicantsFactory.professor();
+            case PHDSTUDENT:
+                return applicantsFactory.phdstudent();
+            case LECTURER:
+                return applicantsFactory.lecturer();
+            case FRIEND:
+                return applicantsFactory.friend();
+            case DEAN:
+                return applicantsFactory.dean();
+            default:
+                throw new IllegalArgumentException("Person type, passed in properties doesn't exist!");
+        }
+
     }
 }

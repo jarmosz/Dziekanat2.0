@@ -17,6 +17,7 @@ public class ApplicantsCreator {
                         .hasChocolate(generateRandomBoolean())
                         .hasFlowers(generateRandomBoolean())
                         .drinkedBears(0)
+                        .waitingRounds(0)
                         .build();
 
                 if(newStudent.isHasChocolate() && newStudent.isHasFlowers()){
@@ -36,6 +37,7 @@ public class ApplicantsCreator {
                         .type(ApplicantType.PROFESSOR)
                         .priority(5.0)
                         .totalDifferential(0)
+                        .waitingRounds(0)
                         .build();
                 return newProfessor;
 
@@ -44,6 +46,7 @@ public class ApplicantsCreator {
                         .type(ApplicantType.PHDSTUDENT)
                         .priority(2.0)
                         .downgradeMarkTotal(0.0)
+                        .waitingRounds(0)
                         .build();
                 return newPhDStudent;
 
@@ -52,6 +55,7 @@ public class ApplicantsCreator {
                         .type(ApplicantType.LECTURER)
                         .priority(4.0)
                         .additionalHomeworkTasks(0)
+                        .waitingRounds(0)
                         .build();
                 return newLecturer;
 
@@ -60,6 +64,7 @@ public class ApplicantsCreator {
                         .type(ApplicantType.FRIEND)
                         .priority(3.0)
                         .complainTime(0.0)
+                        .waitingRounds(0)
                         .build();
                 return newFriend;
 
@@ -67,6 +72,7 @@ public class ApplicantsCreator {
                 Dean newDean = Dean.builder()
                         .type(ApplicantType.DEAN)
                         .priority(6.0)
+                        .waitingRounds(0)
                         .build();
                 return newDean;
 
